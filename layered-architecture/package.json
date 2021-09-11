@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "npm run mongo & sleep 3 && nodemon ./src/index.ts",
-    "mongo": "docker run -e MONGO_INITDB_ROOT_USERNAME=cuteness_ranker -e MONGO_INITDB_ROOT_PASSWORD=very_secret_password_123 -p 27017:27017 -v $PWD/src/data:/data/db mongo"
+    "mongo": "docker run -p 27017:27017 -v $PWD/data:/data/db mongo > /dev/null"
   },
   "author": "",
   "license": "MIT",
@@ -17,5 +17,8 @@
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "mongoose": "^6.0.5"
+  }
 }
