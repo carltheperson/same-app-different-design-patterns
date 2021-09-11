@@ -1,6 +1,6 @@
-import { PetDB } from "../../persistence/db";
-import { Pet } from "../../persistence/models/pet";
-import { createUid, PartialBy } from "../../utils";
+import { PetDB } from "../persistence/db";
+import { Pet } from "../persistence/models/pet";
+import { createUid, PartialBy } from "../utils";
 
 export const createNewPet = (pet: PartialBy<Pet, "id">) => {
   const id = pet.id ?? createUid();
