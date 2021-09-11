@@ -3,7 +3,7 @@ import { petModel } from "./mongo-schemas/pet";
 
 export namespace PetDB {
   export const getAll = async (): Promise<Pet[]> => {
-    return await petModel.find();
+    return await petModel.find({}).lean();
   };
 
   export const getOne = async (id: string): Promise<Pet | undefined> => {

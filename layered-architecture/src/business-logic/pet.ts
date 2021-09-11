@@ -2,9 +2,9 @@ import { PetDB } from "../persistence/db";
 import { Pet } from "../persistence/models/pet";
 import { createUid, PartialBy } from "../utils";
 
-export const createNewPet = (pet: PartialBy<Pet, "id">) => {
+export const createNewPet = async (pet: PartialBy<Pet, "id">) => {
   const id = pet.id ?? createUid();
-  PetDB.createOne({
+  await PetDB.createOne({
     id,
     ...pet,
   });
