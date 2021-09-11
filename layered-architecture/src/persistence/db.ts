@@ -1,3 +1,4 @@
+import { RequireAtLeastOne } from "../utils";
 import { Pet } from "./models/pet";
 import { petModel } from "./mongo-schemas/pet";
 
@@ -17,7 +18,9 @@ export namespace PetDB {
     await petModel.create(pet);
   };
 
-  export const updateOne = async (updatedFields: Partial<Pet>) => {
-    await petModel.updateOne(updatedFields);
+  export const updateOne = async (
+    updatedFields: RequireAtLeastOne<Partial<Pet>, "id">
+  ) => {
+    await petModel.updateOne({ id: updatedFields.id }, updatedFields);
   };
 }

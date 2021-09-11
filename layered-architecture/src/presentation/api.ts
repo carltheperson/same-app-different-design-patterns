@@ -18,13 +18,13 @@ app.get("/leaderboard", async (req, res) => {
 });
 
 app.put("/upvote/:id", async (req, res) => {
-  await upvotePet(req.params.id);
-  res.status(200).send();
+  const points = await upvotePet(req.params.id);
+  res.send(points.toString());
 });
 
 app.put("/downvote/:id", async (req, res) => {
-  await downvotePet(req.params.id);
-  res.status(200).send();
+  const points = await downvotePet(req.params.id);
+  res.send(points.toString());
 });
 
 export const startServer = () => {

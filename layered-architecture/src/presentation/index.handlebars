@@ -5,10 +5,108 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
     <title>Pet cuteness ranker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@600&display=swap" rel="stylesheet"> 
   </head>
   <body>
+    <div id="container">
+      <h1>Pet Cuteness Ranker</h1>
+      <div id="form">
+        <h3>Upload your own pet</h3>
+        <p>Name</p>
+        <input id="pet-name" type="text">
+        <p>Image URL</p>
+        <input id="pet-image-url" type="text">
+        </br></br>
+        <button id="pet-upload-button" onclick="upload()">Upload</button>
+      </div>
 		{{#each pets}}
-       <li>{{this.name}}</li>
+        <h2>{{this.name}}</h2>
+        <button onclick="upvote('{{this.id}}')">Upvote</button><button onclick="downvote('{{this.id}}')">Downvote</button>
+        <h4 id="{{this.id}}-points">Points {{this.points}}</h4>
+        <img src="{{this.imageUrl}}" alt="{{this.name}}">
     {{/each}}
+    </div>
   </body>
+  <script>
+    const upload = () => {
+      const petNameElement = document.getElementById("pet-name")
+      const petImageUrlElement = document.getElementById("pet-image-url")
+      fetch('http://localhost:3000/pet', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({name: petNameElement.value, imageUrl: petImageUrlElement.value})
+      }).then(() =>{
+        location.reload()
+      });
+    }
+    
+    const upvote = (id) => {
+      fetch(`http://localhost:3000/upvote/${id}`, {method: "PUT"}).then(() => {
+        changePointsBy(id, 1)
+      })
+    }
+
+    const downvote = (id) => {
+      fetch(`http://localhost:3000/downvote/${id}`, {method: "PUT"}).then(() => {
+        changePointsBy(id, -1)
+      })
+    }
+
+    const changePointsBy = (id, value) => {
+      const element = document.getElementById(`${id}-points`)
+      const currentValue = parseInt(element.innerHTML.split(" ")[1])
+      element.innerHTML = `Points ${currentValue + value}`
+    }
+
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: #c6dcff;
+      background-image: radial-gradient(white 15%, transparent 6%),
+      radial-gradient(white 15%, transparent 16%);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    #container {
+      margin: auto;
+      width: 60%;
+      min-width: 500px;
+    }
+
+    #form {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    h1, h3 {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin: 3px 0;
+    }
+
+    h4 {
+      margin: 5px 0;
+    }
+
+    img {
+      width: 100%;
+      max-width: 500px;
+    }
+  </style>
 </html>
