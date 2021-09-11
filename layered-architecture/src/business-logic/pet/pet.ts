@@ -1,5 +1,5 @@
-import { PetDB } from "../../presentation/db";
-import { Pet } from "../../presentation/models/pet";
+import { PetDB } from "../../persistence/db";
+import { Pet } from "../../persistence/models/pet";
 import { createUid, PartialBy } from "../../utils";
 
 export const createNewPet = (pet: PartialBy<Pet, "id">) => {
