@@ -4,6 +4,8 @@
 
 Pet cuteness ranker. Upload a picture of your pet and have strangers give it cuteness points. See a global leaderboard where all pets are ranked based on the total cuteness points.
 
+![preview gif](preview.gif)
+
 # Design Patterns
 
 ## Layered Architecture
