@@ -10,8 +10,19 @@ Pet cuteness ranker. Upload a picture of your pet and have strangers give it cut
 
 ## Layered Architecture
 
-<p>
-    <img src="layered-architecture/diagram.png" alt="Layered architecture diagram">
-</p>
+![Layered architecture diagram](layered-architecture/diagram.png)
 
 _Inspired by [Figure 1-1 from Software Architecture Patterns by Mark Richards published by O'Reilly®](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html)_
+
+_References_
+
+- [Chapter 1. from Software Architecture Patterns by Mark Richards](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html)
+
+## Event-Driven Architecture
+
+![Event-driven architecture diagram](event-driven-architecture/diagram.png)
+
+_References_
+
+- [Chapter 2. from Software Architecture Patterns by Mark Richards](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html)
+- [What is Event Driven Architecture (EDA)? by IBM Technology](https://www.youtube.com/watch?v=o2HJCGcYwoU)
