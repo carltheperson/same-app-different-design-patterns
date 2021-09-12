@@ -23,4 +23,14 @@ export namespace PetDB {
   ) => {
     await petModel.updateOne({ id: updatedFields.id }, updatedFields);
   };
+
+  export const updateMany = async (
+    petsWithUpdatedFields: RequireAtLeastOne<Partial<Pet>, "id">[]
+  ) => {
+    return Promise.all(
+      petsWithUpdatedFields.map((updatedFields) =>
+        petModel.updateOne({ id: updatedFields.id }, updatedFields)
+      )
+    );
+  };
 }

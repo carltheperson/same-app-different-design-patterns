@@ -12,7 +12,7 @@ export const servePage = () => {
   app.get("/", async (req, res) => {
     const pets = await PetDB.getAll();
     const petsSortedBasedOnRank = pets.sort(
-      (pet1, pet2) => pet1.rank - pet2.rank
+      (pet1, pet2) => pet2.rank - pet1.rank
     );
 
     res.send(template({ pets: petsSortedBasedOnRank }));

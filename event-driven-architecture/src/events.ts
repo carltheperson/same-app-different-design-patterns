@@ -3,7 +3,7 @@ import events from "events";
 interface EventEmitterEvents {
   upvotePet: (id: string) => void;
   downvotePet: (id: string) => void;
-  petHasUpdatedPoints: (id: string, newPoints: number) => void;
+  aPetHasUpdatedPoints: () => void;
 }
 
 declare interface EventEmitter {
