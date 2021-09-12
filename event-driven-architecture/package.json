@@ -1,0 +1,28 @@
+{
+  "name": "pet-cuteness-ranker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npm run mongo & sleep 3 && nodemon  -e handlebars,ts ./src/index.ts",
+    "mongo": "docker run -p 27017:27017 -v $PWD/data:/data/db mongo > /dev/null"
+  },
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5",
+    "nanoid": "^3.1.25"
+  }
+}
