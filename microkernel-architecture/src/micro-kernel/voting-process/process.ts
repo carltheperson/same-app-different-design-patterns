@@ -1,13 +1,13 @@
 import { eventEmitter } from "../events";
 import { PetDB } from "../persistence/db";
 
-eventEmitter.on("upvotePet", async (id) => {
-  const newPoints = await updatePetPoints(id, +1);
+eventEmitter.on("upvotePet", async (pet) => {
+  const newPoints = await updatePetPoints(pet.id, +1);
   eventEmitter.emit("aPetHasUpdatedPoints");
 });
 
-eventEmitter.on("downvotePet", async (id) => {
-  const newPoints = await updatePetPoints(id, -1);
+eventEmitter.on("downvotePet", async (pet) => {
+  const newPoints = await updatePetPoints(pet.id, -1);
   eventEmitter.emit("aPetHasUpdatedPoints");
 });
 

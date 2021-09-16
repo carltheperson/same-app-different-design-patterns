@@ -16,13 +16,23 @@ app.post("/pet", async (req, res) => {
 });
 
 app.put("/upvote/:id", async (req, res) => {
-  eventEmitter.emit("upvotePet", req.params.id);
-  res.status(200).send();
+  const pet = await PetDB.getOne(req.params.id);
+  if (pet) {
+    eventEmitter.emit("upvotePet", pet);
+    res.status(200).send();
+  } else {
+    res.status(400).send();
+  }
 });
 
 app.put("/downvote/:id", async (req, res) => {
-  eventEmitter.emit("downvotePet", req.params.id);
-  res.status(200).send();
+  const pet = await PetDB.getOne(req.params.id);
+  if (pet) {
+    eventEmitter.emit("downvotePet", pet);
+    res.status(200).send();
+  } else {
+    res.status(400).send();
+  }
 });
 
 export const startServer = () => {
