@@ -1,8 +1,9 @@
 import events from "events";
+import { Pet } from "./persistence/models/pet";
 
 interface EventEmitterEvents {
-  upvotePet: (id: string) => void;
-  downvotePet: (id: string) => void;
+  upvotePet: (pet: Pet) => void;
+  downvotePet: (pet: Pet) => void;
   aPetHasUpdatedPoints: () => void;
 }
 
