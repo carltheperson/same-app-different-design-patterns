@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npm run mongo & sleep 3 && nodemon  -e handlebars,ts ./src/index.ts",
+    "start": "npm run mongo & sleep 3 && nodemon  -e handlebars,ts ./src/micro-kernel/index.ts",
     "mongo": "docker run -p 27017:27017 -v $PWD/data:/data/db mongo > /dev/null"
   },
   "author": "",

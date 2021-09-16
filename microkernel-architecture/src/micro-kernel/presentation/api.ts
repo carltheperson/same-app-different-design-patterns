@@ -18,7 +18,7 @@ app.post("/pet", async (req, res) => {
 app.put("/upvote/:id", async (req, res) => {
   const pet = await PetDB.getOne(req.params.id);
   if (pet) {
-    eventEmitter.emit("upvotePet", pet);
+    eventEmitter.emit("upvotePet", { ...pet, points: pet.points + 1 });
     res.status(200).send();
   } else {
     res.status(400).send();
@@ -28,7 +28,7 @@ app.put("/upvote/:id", async (req, res) => {
 app.put("/downvote/:id", async (req, res) => {
   const pet = await PetDB.getOne(req.params.id);
   if (pet) {
-    eventEmitter.emit("downvotePet", pet);
+    eventEmitter.emit("downvotePet", { ...pet, points: pet.points - 1 });
     res.status(200).send();
   } else {
     res.status(400).send();

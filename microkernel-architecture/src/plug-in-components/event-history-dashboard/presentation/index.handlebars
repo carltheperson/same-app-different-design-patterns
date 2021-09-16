@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <title>Pet cuteness ranker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@600&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div id="container">
+      <h1>Event History Admin Dashboard</h1>
+      <div id="events">
+        <h3>Events</h3>
+        <ul>
+        {{#each events}}
+        <li>{{this.eventMessage}}</li>      
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  </body>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background-color: #c6dcff;
+      background-image: radial-gradient(white 15%, transparent 6%),
+      radial-gradient(white 15%, transparent 16%);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+      padding-bottom: 50px;
+    }
+
+    #container {
+      margin: auto;
+      width: 60%;
+      min-width: 500px;
+    }
+
+    #events {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 30px;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 48px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin: 3px 0;
+    }
+
+    h3 {
+      font-size: 22px;
+      text-align: center;
+    }
+  </style>
+</html>

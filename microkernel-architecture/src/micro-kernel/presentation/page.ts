@@ -4,7 +4,7 @@ import Handlebars from "handlebars";
 import { PetDB } from "../persistence/db";
 
 const templateSource = readFileSync(
-  "./src/presentation/index.handlebars"
+  "./src/micro-kernel/presentation/index.handlebars"
 ).toString();
 const template = Handlebars.compile(templateSource);
 
