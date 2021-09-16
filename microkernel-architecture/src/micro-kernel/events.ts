@@ -6,7 +6,7 @@ interface EventEmitterEvents {
   aPetHasUpdatedPoints: () => void;
 }
 
-declare interface EventEmitter {
+export declare interface EventEmitter {
   on<U extends keyof EventEmitterEvents>(
     event: U,
     listener: EventEmitterEvents[U]
@@ -18,7 +18,7 @@ declare interface EventEmitter {
   ): boolean;
 }
 
-class EventEmitter extends events.EventEmitter {
+export class EventEmitter extends events.EventEmitter {
   constructor() {
     super();
   }
