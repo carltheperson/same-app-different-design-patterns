@@ -6,7 +6,9 @@ export const upvoteEventHandler = async (pet: Pet) => {
   await EventDB.createOne({
     id: createUid(),
     timeUnix: convertDateToUnixTime(new Date()),
-    eventMessage: `${pet.name} got an upvote and now has ${pet.points} points`,
+    eventMessage: `${pet.name} got an upvote and now has ${
+      pet.points + 1
+    } points`,
   });
 };
 
@@ -14,6 +16,8 @@ export const downvoteEventHandler = async (pet: Pet) => {
   await EventDB.createOne({
     id: createUid(),
     timeUnix: convertDateToUnixTime(new Date()),
-    eventMessage: `${pet.name} got a downvote and now has ${pet.points} points`,
+    eventMessage: `${pet.name} got a downvote and now has ${
+      pet.points - 1
+    } points`,
   });
 };
