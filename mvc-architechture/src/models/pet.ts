@@ -16,20 +16,40 @@ export class Pet {
   public points: number;
   public imageUrl: string;
 
-  constructor(fields: { name: string; points: number; imageUrl: string }) {
-    const id = createUid();
+  constructor(fields: {
+    name: string;
+    imageUrl: string;
+    points?: number;
+    id?: string;
+  }) {
+    const id = fields.id ?? createUid();
+    const points = fields.points ?? 0;
+
     this.id = id;
     this.name = fields.name;
-    this.points = fields.points;
+    this.points = points;
     this.imageUrl = fields.imageUrl;
 
-    dbModel.create({ ...fields, id });
+    const isCreated = Boolean(fields.id);
+    if (!isCreated) {
+      dbModel.create({
+        name: this.name,
+        imageUrl: this.imageUrl,
+        id: this.id,
+        points: this.points,
+      });
+    }
   }
 
   public static async getFromID(id: string) {
     const pet = await dbModel.findOne({ id });
     if (pet) {
-      return new Pet(pet);
+      return new Pet({
+        name: pet.name,
+        imageUrl: pet.imageUrl,
+        points: pet.points,
+        id,
+      });
     }
   }
 

@@ -1,5 +1,5 @@
 import Mongoose from "mongoose";
-import { MONGO_URI } from "../constants";
+import { MONGO_URI } from "./constants";
 
 let database: Mongoose.Connection;
 

@@ -2,7 +2,9 @@ import { AllPets } from "../models/pet";
 import { readFileSync } from "fs";
 import Handlebars from "handlebars";
 
-const templateSource = readFileSync("./src/views/index.handlebars").toString();
+const templateSource = readFileSync(
+  "./src/views/leaderboard.handlebars"
+).toString();
 
 const template = Handlebars.compile(templateSource);
 
