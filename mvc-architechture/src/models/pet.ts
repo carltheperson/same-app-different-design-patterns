@@ -1,4 +1,5 @@
 import { Schema, model, Document } from "mongoose";
+import { createUid } from "../utils";
 
 const petSchema = new Schema({
   id: String,
@@ -15,14 +16,21 @@ export class Pet {
   public points: number;
   public imageUrl: string;
 
-  constructor(fields: Pet) {
-    const { id, name, points, imageUrl } = fields;
+  constructor(fields: { name: string; points: number; imageUrl: string }) {
+    const id = createUid();
     this.id = id;
-    this.name = name;
-    this.points = points;
-    this.imageUrl = imageUrl;
+    this.name = fields.name;
+    this.points = fields.points;
+    this.imageUrl = fields.imageUrl;
 
-    dbModel.create(fields);
+    dbModel.create({ ...fields, id });
+  }
+
+  public static async getFromID(id: string) {
+    const pet = await dbModel.findOne({ id });
+    if (pet) {
+      return new Pet(pet);
+    }
   }
 
   public async save() {
