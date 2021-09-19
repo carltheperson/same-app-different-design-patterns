@@ -38,7 +38,7 @@ npm install
 npm start
 ```
 
-You should now be able to go to [localhost:3000](localhost:3000) and see the app
+You should now be able to go to [localhost:3000](http://localhost:3000) and see the app
 
 # Design Patterns
 
