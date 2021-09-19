@@ -44,7 +44,7 @@ export class Pet {
 }
 
 export class AllPets {
-  public async get(): Promise<Pet[]> {
+  public static async get(): Promise<Pet[]> {
     return await dbModel.find({}).lean();
   }
 }
