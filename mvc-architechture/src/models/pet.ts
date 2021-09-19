@@ -75,4 +75,11 @@ export class AllPets {
   public static async get(): Promise<Pet[]> {
     return await dbModel.find({}).lean();
   }
+
+  public static async getSortedBasedOnPoints(): Promise<Pet[]> {
+    const pets = await AllPets.get();
+    return pets.sort((pet1, pet2) => {
+      return pet2.points - pet1.points;
+    });
+  }
 }

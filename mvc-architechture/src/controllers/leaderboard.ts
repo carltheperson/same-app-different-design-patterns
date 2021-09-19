@@ -9,6 +9,6 @@ const templateSource = readFileSync(
 const template = Handlebars.compile(templateSource);
 
 export const getLeaderboardHTMLController = async () => {
-  const pets = await AllPets.get();
+  const pets = await AllPets.getSortedBasedOnPoints();
   return template({ pets });
 };
