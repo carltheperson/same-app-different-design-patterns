@@ -33,6 +33,14 @@ export class Pet {
 
     return;
   }
+
+  public upvote() {
+    this.points += 1;
+  }
+
+  public downvote() {
+    this.points -= 1;
+  }
 }
 
 export class AllPets {
